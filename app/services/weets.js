@@ -1,5 +1,5 @@
 const api = require('../helpers/axios');
-const errors = require('../errors');
+const errors = require('../middlewares/errors');
 
 const getWeet = async () => {
   try {
@@ -7,7 +7,7 @@ const getWeet = async () => {
     if (!data) throw errors.apiConnectionError('Could not connect with numbers api');
     return data;
   } catch (error) {
-    throw error;
+    throw errors.api_external_error('Error from external API');
   }
 };
 
