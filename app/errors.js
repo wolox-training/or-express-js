@@ -8,3 +8,9 @@ exports.databaseError = message => internalError(message, exports.DATABASE_ERROR
 
 exports.DEFAULT_ERROR = 'default_error';
 exports.defaultError = message => internalError(message, exports.DEFAULT_ERROR);
+
+exports.API_CONNECTION_ERROR = 'api_connection_error';
+exports.apiConnectionError = message => internalError(message, exports.API_CONNECTION_ERROR);
+
+exports.API_EXTERNAL_ERROR = 'api_external_error';
+exports.apiExternalError = message => internalError(message, exports.API_EXTERNAL_ERROR);
