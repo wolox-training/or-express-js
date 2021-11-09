@@ -1,5 +1,8 @@
 'use strict';
 
+const bcrypt = require('bcrypt');
+const config = require('../../config').common.hash;
+
 module.exports = (sequelize, DataTypes) => {
   const User = sequelize.define('User', {
     id: {
@@ -37,5 +40,14 @@ module.exports = (sequelize, DataTypes) => {
       }
     }
   });
+
+  User.newUser = async data => {
+    const user = User.create({
+      ...data,
+      password: await bcrypt.hashSync(data, Number(config.salt))
+    });
+    return user;
+  };
+
   return User;
 };
