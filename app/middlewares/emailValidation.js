@@ -1,9 +1,9 @@
-const db = require('../models');
 const errors = require('../errors');
+const { findOne } = require('../services/users');
 
 const woloxDomain = '@wolox.com.ar';
 const checkIfEmailExists = async (req, _, next) => {
-  const registered = await db.User.findOne({ where: { email: req.body.email } });
+  const registered = await findOne({ email: req.body.email });
   const isWoloxDomain = woloxDomain.localeCompare(
     req.body.email.substring(req.body.email.lastIndexOf('@') + 1)
   );
