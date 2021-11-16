@@ -30,14 +30,14 @@
   ],
   "main": "app.js",
   "author": "Wolox",
-  "homepage": "https://github.com/oarozu/or-express-js.git",
+  "homepage": "https://github.com/wolox-training/or-express-js.git",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/oarozu/or-express-js.git.git"
+    "homepage": "https://github.com/wolox-training/or-express-js.git"
   },
   "bugs": {
-    "url": "https://github.com/oarozu/or-express-js.git/issues",
+    "url": "https://github.com/wolox-training/or-express-js.git/issues",
     "email": "tls@wolox.com.ar"
   },
   "jest": {
