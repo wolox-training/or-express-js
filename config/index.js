@@ -50,6 +50,9 @@ const config = {
     },
     hash: {
       salt: process.env.SALT
+    },
+    company: {
+      domain: process.env.COMPANY_DOMAIN
     }
   }
 };

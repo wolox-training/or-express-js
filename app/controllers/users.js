@@ -7,12 +7,12 @@ const signUp = async (req, res, next) => {
   try {
     const userFound = await usersService.findByEmail(userData.email);
     if (userFound) {
-      logger.error('EMAIL_CONFLICT');
-      return next(errors.conflict('EMAIL_CONFLICT'));
+      logger.error('REGISTERED_EMAIL_ERROR');
+      return next(errors.conflict('REGISTERED_EMAIL_ERROR'));
     }
     const createdUser = await usersService.createUser(userData);
     logger.info(createdUser.email);
-    return res.status(201).send(createdUser);
+    return res.status(201).send();
   } catch (error) {
     logger.error(error.message);
     return next(error);
