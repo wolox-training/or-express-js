@@ -8,7 +8,7 @@ const signUp = async (req, res, next) => {
     const userFound = await usersService.findByEmail(userData.email);
     if (userFound) {
       logger.error('REGISTERED_EMAIL_ERROR');
-      return next(errors.conflict('REGISTERED_EMAIL_ERROR'));
+      return next(errors.registeredEmailError('REGISTERED_EMAIL_ERROR'));
     }
     const createdUser = await usersService.createUser(userData);
     logger.info(createdUser.email);
