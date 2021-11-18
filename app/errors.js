@@ -14,3 +14,9 @@ exports.apiConnectionError = message => internalError(message, exports.API_CONNE
 
 exports.API_EXTERNAL_ERROR = 'api_external_error';
 exports.apiExternalError = message => internalError(message, exports.API_EXTERNAL_ERROR);
+
+exports.REGISTERED_EMAIL_ERROR = 'registered_email_error';
+exports.registeredEmailError = message => internalError(message, exports.REGISTERED_EMAIL_ERROR);
+
+exports.DOMAIN_EMAIL_ERROR = 'domain_email_error';
+exports.domainEmailError = message => internalError(message, exports.DOMAIN_EMAIL_ERROR);

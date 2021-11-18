@@ -47,6 +47,12 @@ const config = {
     },
     numberApi: {
       numbers: process.env.NUMBERS_API_URL
+    },
+    hash: {
+      salt: process.env.SALT
+    },
+    company: {
+      domain: process.env.COMPANY_DOMAIN
     }
   }
 };

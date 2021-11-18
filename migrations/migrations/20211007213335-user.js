@@ -26,9 +26,19 @@ module.exports = {
       password: {
         type: Sequelize.STRING,
         allowNull: false
+      },
+      created_at: {
+        allowNull: false,
+        type: Sequelize.DATE
+      },
+      updated_at: {
+        allowNull: false,
+        type: Sequelize.DATE
       }
     });
   },
 
-  down: queryInterface => queryInterface.dropTable('users')
+  down: async queryInterface => {
+    await queryInterface.dropTable('users');
+  }
 };
