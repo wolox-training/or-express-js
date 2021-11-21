@@ -9,6 +9,9 @@ exports.databaseError = message => internalError(message, exports.DATABASE_ERROR
 exports.DEFAULT_ERROR = 'default_error';
 exports.defaultError = message => internalError(message, exports.DEFAULT_ERROR);
 
+exports.VALIDATION_ERROR = 'validation_error';
+exports.validationError = message => internalError(message, exports.VALIDATION_ERROR);
+
 exports.API_CONNECTION_ERROR = 'api_connection_error';
 exports.apiConnectionError = message => internalError(message, exports.API_CONNECTION_ERROR);
 
