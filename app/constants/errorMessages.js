@@ -6,7 +6,8 @@ const errorMessages = {
   passwordRequired: 'Password required',
   firstNameRequired: 'First Name required',
   lastNameRequired: 'Last Name required',
-  emailRegister: 'Email is already registered'
+  emailRegister: 'Email is already registered',
+  userNotFound: 'User not found'
 };
 
 module.exports = errorMessages;
