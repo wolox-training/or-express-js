@@ -12,6 +12,9 @@ exports.defaultError = message => internalError(message, exports.DEFAULT_ERROR);
 exports.VALIDATION_ERROR = 'validation_error';
 exports.validationError = message => internalError(message, exports.VALIDATION_ERROR);
 
+exports.AUTHENTICATION_ERROR = 'authentication_error';
+exports.authenticationError = message => internalError(message, exports.AUTHENTICATION_ERROR);
+
 exports.API_CONNECTION_ERROR = 'api_connection_error';
 exports.apiConnectionError = message => internalError(message, exports.API_CONNECTION_ERROR);
 

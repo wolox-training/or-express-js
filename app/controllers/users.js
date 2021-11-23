@@ -31,9 +31,9 @@ const signIn = async (req, res, next) => {
     const isEqual = await usersService.comparePassword(userData.password, userExists.password);
     if (!isEqual) {
       logger.error(errorMessages.invalidPassword);
-      return next(errors.authenticationError(errorMessages.invalidPassword));
+      return next(errors.authenticationError(errorMessages.invalidCredentials));
     }
-    return res.status(201).send(usersService.login(userExists));
+    return res.status(200).send(usersService.login(userExists));
   } catch (error) {
     logger.error(error.message);
     return next(error);

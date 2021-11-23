@@ -100,4 +100,25 @@ describe('POST /users', () => {
     expect(response.body).toHaveProperty('message', 'The password must be at least 6 characters long');
     expect(createdUser).toBe(null);
   });
+
+  it('Should return a weak credentials validation error', async () => {
+    User.create({
+      firstName: 'Andres',
+      lastName: 'Roa',
+      email: 'aroa@wolox.com.ar',
+      password: '123456'
+    });
+
+    const response = await request(app)
+      .post('/users/sessions')
+      .send({
+        firstName: 'Andres',
+        lastName: 'Roa',
+        email: 'aroa@wolox.com.ar',
+        password: '654321'
+      });
+
+    expect(response.body).toHaveProperty('internal_code', 'authentication_error');
+    expect(response.body).toHaveProperty('message', 'Invalid credentials');
+  });
 });

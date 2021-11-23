@@ -1,6 +1,6 @@
 const errorMessages = {
   invalidDomain: 'Domain is not valid',
-  invalidPassword: 'Invalid password',
+  invalidCredentials: 'Invalid credentials',
   invalidPasswordLength: 'The password must be at least 6 characters long',
   emailRequired: 'Email required',
   passwordRequired: 'Password required',
