@@ -1,6 +1,8 @@
+const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const config = require('../../config').common.hash;
 const User = require('../models').user;
+const logger = require('../logger');
 const formatEmail = require('../utils/formatEmail');
 
 const findOne = async condition => {
@@ -19,4 +21,20 @@ const createUser = async data => {
   return user;
 };
 
-module.exports = { createUser, findOne, findByEmail };
+const comparePassword = async (password, dbPassword) => {
+  const match = await bcrypt.compare(password, dbPassword);
+  return match;
+};
+
+const generateToken = user =>
+  jwt.sign({ id: user.id, role: user.role, email: user.email, iat: Date.now() }, process.env.JWT_SECRET, {
+    expiresIn: '30m'
+  });
+
+const login = user => {
+  const token = generateToken(user);
+  logger.info(`User login: ${user.firstName} ${user.lastName}`);
+  return { user, token };
+};
+
+module.exports = { createUser, findOne, findByEmail, comparePassword, login };

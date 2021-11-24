@@ -1,6 +1,7 @@
 const errors = require('../errors');
 const { findOne } = require('../services/users');
 const { company } = require('../../config/index').common;
+const errorMessages = require('../constants/errorMessages');
 
 const checkIfEmailExists = async (req, _, next) => {
   const registered = await findOne({ email: req.body.email });
@@ -8,10 +9,10 @@ const checkIfEmailExists = async (req, _, next) => {
     req.body.email.substring(req.body.email.lastIndexOf('@') + 1)
   );
   if (registered) {
-    return next(errors.registeredEmailError('Email is already registered.'));
+    return next(errors.registeredEmailError(errorMessages.emailRegister));
   }
   if (isWoloxDomain !== 0) {
-    return next(errors.domainEmailError('Domain is not valid'));
+    return next(errors.domainEmailError(errorMessages.invalidDomain));
   }
   return next();
 };
