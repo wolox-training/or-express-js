@@ -40,4 +40,17 @@ const signIn = async (req, res, next) => {
   }
 };
 
-module.exports = { signUp, signIn };
+const addUserAdmin = (req, res, next) =>
+  usersService
+    .createUserAdmin(req.body)
+    .then(result => {
+      logger.info(`User created as admin: ${result.email}`);
+      return result;
+    })
+    .then(result => res.status(201).send(result))
+    .catch(e => {
+      logger.error(e.message);
+      return next(e);
+    });
+
+module.exports = { signUp, signIn, addUserAdmin };

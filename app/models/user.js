@@ -38,6 +38,10 @@ module.exports = (sequelize, DataTypes) => {
           notEmpty: true
         }
       },
+      admin: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false
+      },
       createdAt: {
         type: DataTypes.DATE,
         field: 'created_at'
@@ -45,6 +49,10 @@ module.exports = (sequelize, DataTypes) => {
       updatedAt: {
         type: DataTypes.DATE,
         field: 'updated_at'
+      },
+      timestampTokenIat: {
+        type: DataTypes.DATE,
+        field: 'timestamp_token_iat'
       }
     },
     {
@@ -52,5 +60,10 @@ module.exports = (sequelize, DataTypes) => {
       tableName: 'users'
     }
   );
+
+  User.associate = ({ weet }) => {
+    User.hasMany(weet);
+  };
+
   return User;
 };
