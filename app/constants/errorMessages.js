@@ -7,7 +7,10 @@ const errorMessages = {
   firstNameRequired: 'First Name required',
   lastNameRequired: 'Last Name required',
   emailRegister: 'Email is already registered',
-  userNotFound: 'User not found'
+  userNotFound: 'User not found',
+  tokenNotFound: 'token not found',
+  tokenNotValid: 'token not valid',
+  onlyAccessAdmin: 'Only user admin access'
 };
 
 module.exports = errorMessages;

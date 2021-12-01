@@ -53,6 +53,9 @@ const config = {
     },
     company: {
       domain: process.env.COMPANY_DOMAIN
+    },
+    jwt: {
+      secret_key: process.env.JWT_SECRET
     }
   }
 };

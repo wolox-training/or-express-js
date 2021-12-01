@@ -3,10 +3,18 @@ const validateSchema = require('./middlewares/validateSchema');
 const usersController = require('./controllers/users');
 const { userSchema, loginSchema } = require('./validations');
 const checkIfEmailExists = require('./middlewares/emailValidation');
+const weetsController = require('./controllers/weets');
+const security = require('./middlewares/security');
 
 exports.init = app => {
   app.get('/health', healthCheck);
 
   app.post('/users', [validateSchema(userSchema), checkIfEmailExists], usersController.signUp);
+  app.post(
+    '/admin/users',
+    [security.validateToken, security.isAdmin, validateSchema(userSchema), checkIfEmailExists],
+    usersController.addUserAdmin
+  );
   app.post('/users/sessions', [validateSchema(loginSchema)], usersController.signIn);
+  app.post('/weets', [security.validateToken], weetsController.createWeet);
 };
